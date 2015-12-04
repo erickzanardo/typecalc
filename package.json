@@ -12,9 +12,9 @@
   "author": "Erick Zanardo",
   "license": "MIT",
   "devDependencies": {
+    "gulp": "^3.9.0",
     "gulp-tsc": "^1.1.4",
-    "gulp": "^3.9.0"
+    "mocha": "^2.3.4"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

@@ -4,7 +4,7 @@ var gulp = require("gulp"),
  
 gulp.task("compile", function(){
   gulp.src(["src/**/*.ts"])
-    .pipe(typescript({ emitError: false, target: "ES6" }))
+    .pipe(typescript({ emitError: false, target: "ES6", module: "ES6" }))
     .pipe(gulp.dest("dist/"))
 });
 
