@@ -1,0 +1,20 @@
+{
+  "name": "type-calc",
+  "version": "1.0.0",
+  "description": "Terminal based Spreadsheet calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive specs/"
+  },
+  "keywords": [
+    "Spreadsheet"
+  ],
+  "author": "Erick Zanardo",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp-tsc": "^1.1.4",
+    "gulp": "^3.9.0"
+  },
+  "dependencies": {
+  }
+}
