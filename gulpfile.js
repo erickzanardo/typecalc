@@ -3,11 +3,11 @@ var gulp = require("gulp"),
     typescript = require("gulp-tsc");
  
 gulp.task("compile", function(){
-  gulp.src(["src/**/*.ts"])
-    .pipe(typescript({ emitError: false, target: "ES6", module: "ES6" }))
+  gulp.src(["src/**/*.ts", "spec/**/*.ts"])
+    .pipe(typescript({ emitError: false, target: "ES5" }))
     .pipe(gulp.dest("dist/"))
 });
 
 gulp.task("watch", function() {
-  gulp.watch("src/**/*.ts", ["compile"]);
+  gulp.watch(["src/**/*.ts", "spec/**/*.ts"], ["compile"]);
 });

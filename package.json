@@ -4,7 +4,7 @@
   "description": "Terminal based Spreadsheet calculator",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive specs/"
+    "test": "node_modules/mocha/bin/mocha --recursive dist/spec/"
   },
   "keywords": [
     "Spreadsheet"
@@ -12,6 +12,7 @@
   "author": "Erick Zanardo",
   "license": "MIT",
   "devDependencies": {
+    "chai": "^3.4.1",
     "gulp": "^3.9.0",
     "gulp-tsc": "^1.1.4",
     "mocha": "^2.3.4"
