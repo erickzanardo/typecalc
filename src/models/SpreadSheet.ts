@@ -15,7 +15,7 @@ export class SpreadSheet {
     return this.row(row) ? this.row(row).getColumn(column) : null;
   }
 
-  setValue(row: number, column: string, value : Object) {
+  setValue(row: number, column: string, value : string) {
     if (!this.row(row)) {
       this.setRow(new Row(row));
     }
@@ -26,7 +26,7 @@ export class SpreadSheet {
     this.column(row, column).value = value;
   }
 
-  getValue(rowId: number, columnId: string): Object {
+  getValue(rowId: number, columnId: string): string {
     var column = this.column(rowId, columnId);
     return column ? column.value : null;
   }

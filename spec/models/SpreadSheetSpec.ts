@@ -9,10 +9,10 @@ describe("#SpreadSheet", function() {
   describe("setting and getting a value", function() {
 
     var spreadSheet = new SpreadSheet();
-    spreadSheet.setValue(1, "A", 12);
+    spreadSheet.setValue(1, "A", "Bla");
 
     it("returns the correctly value", function() {
-      expect(spreadSheet.getValue(1, "A")).to.equal(12);
+      expect(spreadSheet.getValue(1, "A")).to.equal("Bla");
     });
   });
 });
