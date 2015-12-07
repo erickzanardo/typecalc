@@ -17,5 +17,7 @@
     "gulp-tsc": "^1.1.4",
     "mocha": "^2.3.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "blessed": "^0.1.81"
+  }
 }
