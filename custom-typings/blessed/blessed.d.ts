@@ -6,6 +6,8 @@
 interface Blessed {
   screen(opts: Object): any;
   box(opts: Object): any;
+  textbox(opts: Object): any;
+  text(opts: Object): any;
 }
 
 declare var blessed: Blessed
