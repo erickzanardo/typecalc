@@ -9,16 +9,16 @@ describe("#SpreadSheet", function() {
   describe("setting and getting a value", function() {
 
     var spreadSheet = new SpreadSheet();
-    spreadSheet.setValue(1, "B", "Bla");
+    spreadSheet.setValue("B", 1, "Bla");
 
     it("returns the correctly value", function() {
-      expect(spreadSheet.getValue(1, "B")).to.equal("Bla");
+      expect(spreadSheet.getValue("B", 1)).to.equal("Bla");
     });
 
     context("when the cell is a number", function() {
-      spreadSheet.setValue(1, "A", "1");
+      spreadSheet.setValue("A", 1, "1");
       it("return the correct datatype", function() {
-        expect(typeof(spreadSheet.getValue(1, "A"))).to.equal("number");
+        expect(typeof(spreadSheet.getValue("A", 1))).to.equal("number");
       });
     });
   });
