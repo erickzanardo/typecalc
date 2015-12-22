@@ -26,6 +26,10 @@ export class SpreadSheet {
     this.column(row, column).value = value;
   }
 
+  getColumn(columnId: string, rowId: number): Column {
+    return this.column(rowId, columnId);
+  }
+
   getValue(columnId: string, rowId: number): any {
     var column = this.column(rowId, columnId);
     return column ? column.value : null;

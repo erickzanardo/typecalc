@@ -69,7 +69,11 @@ for (var y = 0; y < initialCells.h; y++) {
 
       if (x > 0) {
         if (!matrix[y - 1]) matrix[y - 1] = [];
-        matrix[y - 1][x - 1] = box;
+        matrix[y - 1][x - 1] = {
+          box: box,
+          r: y,
+          c: columnChar(x - 1)
+        }
       }
     }
   }
@@ -84,7 +88,7 @@ var current = {x: 0, y: 0};
 var blurCell = function() {
   // XXX
   if (!matrix[current.y]) return;
-  var box = matrix[current.y][current.x];
+  var box = matrix[current.y][current.x].box;
   // XXX
   if (!box) return;
   box.style.bg = "";
@@ -94,7 +98,7 @@ var blurCell = function() {
 var focusCell = function() {
   // XXX
   if (!matrix[current.y]) return;
-  var box = matrix[current.y][current.x];
+  var box = matrix[current.y][current.x].box;
   // XXX
   if (!box) return;
   box.style.bg = "green";
@@ -104,8 +108,15 @@ var focusCell = function() {
 var editMode = false;
 screen.key("i", function() {
   editMode = true;
-  var box = matrix[current.y][current.x];
-  editbox.setValue(box.getContent());
+  var cell = matrix[current.y][current.x];
+
+  var column = sheet.getColumn(cell.c, cell.r);
+  if (column && column.isFormula()) {
+    editbox.setValue(column.formula.rawFormula);
+  } else {
+    var box = cell.box;
+    editbox.setValue(box.getContent());
+  }
   editbox.focus();
   screen.render();
 });
@@ -116,8 +127,12 @@ editbox.on("submit", function() {
     var value = editbox.getValue();
     editbox.setValue("");
 
-    var box = matrix[current.y][current.x];
-    box.setContent(value);
+    var cell = matrix[current.y][current.x];
+    var box = cell.box;
+
+    sheet.setValue(cell.c, cell.r, value);
+    box.setContent("" + sheet.getValue(cell.c, cell.r));
+
     box.focus();
     screen.render();
   }

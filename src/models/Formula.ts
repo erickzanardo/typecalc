@@ -1,20 +1,21 @@
 import { SpreadSheet } from "./SpreadSheet";
 
 export class Formula {
-  private rawFormula : string;
+  private _rawFormula : string;
   private spreadSheet : SpreadSheet;
   private _value : number;
 
   constructor(rawFormula : string, spreadSheet : SpreadSheet) {
-    this.rawFormula = rawFormula;
+    this._rawFormula = rawFormula;
     this.spreadSheet = spreadSheet;
     this.calcFormula();
   }
 
+  get rawFormula() : string { return this._rawFormula; }
   get value() : number { return this._value; }
 
   private calcFormula() {
-    var f = this.rawFormula;
+    var f = this._rawFormula;
     // Remove the = character
     f = f.substring(1, f.length);
     // Parses the cells references
