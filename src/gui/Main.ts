@@ -34,6 +34,14 @@ var initialCells = {
   h: Math.ceil(screen.height / cellSize.h)
 };
 
+var _columnChar = {};
+var columnChar = function(i) {
+  if (_columnChar[i]) return _columnChar[i];
+  var c = String.fromCharCode(i + 65)
+  _columnChar[i] = c;
+  return c;
+}
+
 var tableOffset = 3;
 var matrix = [];
 // Labels
@@ -46,7 +54,7 @@ for (var y = 0; y < initialCells.h; y++) {
         left: cellSize.w + (cellSize.w * x),
         width: cellSize.w,
         border: { type: "line" },
-        content: x + ""
+        content: columnChar(x) 
       }));
     } else {
       // Label
@@ -55,7 +63,7 @@ for (var y = 0; y < initialCells.h; y++) {
         left: cellSize.w * x,
         width: cellSize.w,
         border: { type: "line" },
-        content: (x == 0 ? x + "": "")
+        content: (x == 0 ? y + "": "")
       });
       container.append(box);
 
@@ -115,32 +123,27 @@ editbox.on("submit", function() {
   }
 });
 
-screen.key("j", function() {
+var moveControl = function(key, step) {
   if (editMode) return;
   blurCell();
-  current.y++;
+  current[key] += step;
   focusCell();
+};
+
+screen.key("j", function() {
+  moveControl("y", 1);
 });
 
 screen.key("k", function() {
-  if (editMode) return;
-  blurCell();
-  current.y--;
-  focusCell();
+  moveControl("y", -1);
 });
 
 screen.key("l", function() {
-  if (editMode) return;
-  blurCell();
-  current.x++;
-  focusCell();
+  moveControl("x", 1);
 });
 
 screen.key("h", function() {
-  if (editMode) return;
-  blurCell();
-  current.x--;
-  focusCell();
+  moveControl("x", -1);
 });
 
 focusCell();
