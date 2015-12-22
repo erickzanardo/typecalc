@@ -17,7 +17,7 @@ export class SpreadSheet {
 
   setValue(column: string, row: number, value : string) {
     if (!this.row(row)) {
-      this.setRow(new Row(row));
+      this.setRow(new Row(row, this));
     }
 
     if (!this.row(row).hasColumn(column)) {

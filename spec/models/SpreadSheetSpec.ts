@@ -16,9 +16,21 @@ describe("#SpreadSheet", function() {
     });
 
     context("when the cell is a number", function() {
+      var spreadSheet = new SpreadSheet();
       spreadSheet.setValue("A", 1, "1");
       it("return the correct datatype", function() {
         expect(typeof(spreadSheet.getValue("A", 1))).to.equal("number");
+      });
+    });
+
+    context("when the cell is a formula", function() {
+      var spreadSheet = new SpreadSheet();
+      spreadSheet.setValue("A", 1, "1");
+      spreadSheet.setValue("A", 2, "1");
+      spreadSheet.setValue("A", 3, "=A1 + A2");
+
+      it("return the correct datatype", function() {
+        expect(spreadSheet.getValue("A", 3)).to.equal(2);
       });
     });
   });
