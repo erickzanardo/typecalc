@@ -1,3 +1,3 @@
 export enum Formats {
-  Number, String
+  Number, String, Formula
 };

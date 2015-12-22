@@ -11,6 +11,7 @@ describe("#FormatsHelper", function() {
     it("returns the correctly format", function() {
       expect(FormatsHelper.guess("1")).to.equal(Formats.Number);
       expect(FormatsHelper.guess("James Bond")).to.equal(Formats.String);
+      expect(FormatsHelper.guess("=1 + 1")).to.equal(Formats.Formula);
     });
   });
 });
